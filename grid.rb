@@ -19,18 +19,17 @@ class Grid
   def display
     @board.each do |row|
       display_row row
-
     end
   end
 
   def display_row row
     row.each do |space|
-      if space.shot_at && space.ship
-        print "X"
-      elsif !space.shot_at && !space.ship
-        print "0"
+      if space.shot && space.ship
+        print " X "
+      elsif space.shot && !space.ship
+        print " 0 "
       else
-        print "_"
+        print " + "
       end
     end
     puts "\n"
