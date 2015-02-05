@@ -1,6 +1,6 @@
 class Space
     
-    attr_reader :ship, :shot
+    attr_reader :ship, :shot, :empty
 
   def initialize 
     @ship = false
@@ -11,9 +11,7 @@ class Space
     @ship = true
   end
 
-  def check
-    if @ship
-      @shot = true
-    end
+  def shot_at
+    @shot = true
   end
 end
