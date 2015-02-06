@@ -34,18 +34,43 @@ class Ship
     if @horizontal
       @length.times do 
         grid.board[row][col].is_ship
+        if @length == 2
+          grid.board[row][col].is_patrol
+        elsif @length == 4
+          grid.board[row][col].is_batship
+        elsif @length == 5
+          grid.board[row][col].is_carrier
+        else
+          if @d
+            grid.board[row][col].is_dest
+          else
+            grid.board[row][col].is_sub
+          end
+        end
         col += 1
       end
     else
       @length.times do 
         grid.board[row][col].is_ship
+        if @length == 2
+          grid.board[row][col].is_patrol
+        elsif @length == 4
+          grid.board[row][col].is_batship
+        elsif @length == 5
+          grid.board[row][col].is_carrier
+        else
+          if @d
+            grid.board[row][col].is_dest
+          else
+            grid.board[row][col].is_sub
+          end
+        end
         row += 1
       end
     end 
   end
+
 end
-
-
 
 class Patrolboat < Ship
   def initialize horizontal = nil
@@ -60,6 +85,7 @@ class Destroyer < Ship
     super
     @length = 3
     @horizontal = horizontal
+    @d = true
   end
 end
 

@@ -33,14 +33,14 @@ class ShipsTest < Minitest::Test
     assert g.board[0][0].ship
     assert g.board[1][0].ship
     assert g.board[2][0].ship
+    assert g.board[2][0].dest
   end
 
   def test_ships_cant_be_placed_off_grid
     g = Grid.new(5,5)
     s1 = Battleship.new
     s2 = Patrolboat.new(true)
-    s3 = Destroyer.new 
-    # refute s.check_place(g, col: 3, row: 3)
+    
     if s1.check_place(g, col: 3, row: 3)
       s1.place(g, col:3, row:3)
     end
@@ -50,12 +50,6 @@ class ShipsTest < Minitest::Test
       s2.place(g, col:0, row:0)
     end
     assert g.board[0][1].ship
-
-    if s3.check_place(g, col:2, row: 1)
-      s3.place(g, col:2, row: 1)
-    end
-    assert g.board[3][2].ship
-
   end
 
   def test_ships_cant_overlap
@@ -72,6 +66,15 @@ class ShipsTest < Minitest::Test
     assert g.board[3][1].ship
     refute g.board[3][0].ship
     refute g.board[3][2].ship
+  end
+
+  def test_subs_arent_destroyers
+    g = Grid.new(5,5)
+    s1 = Sub.new(true)
+
+    s1.place(g, col:0, row:0)
+    assert g.board[0][0].sub
+    refute g.board[0][0].dest
   end
 
 end
