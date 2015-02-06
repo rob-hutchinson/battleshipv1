@@ -24,14 +24,17 @@ end
 
 class ShipsTest < Minitest::Test
   def test_ships_can_be_placed
-    g = Grid.new(2,2)
-    s = Ship.new(2)
+    g = Grid.new(5,5)
+    s = Destroyer.new
 
-    s.place(g,2,0,0)
+    s.place(g,col: 0, row: 0)
     assert g.board[0][0].ship
-
+    assert g.board[1][0].ship
+    assert g.board[2][0].ship
   end
 end
+
+
 # class ShipsTests <Minitest::Test
   
 #   def test_ships_know_their_length_and_direction
