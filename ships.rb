@@ -4,16 +4,37 @@ class Ship
 
   attr_reader :length, :horizontal
 
-  def initialize
+  def initialize horizontal = nil
     # @length = length
-    # @horizontal = horizontal
+    @horizontal = horizontal
   end  
 
-  def place grid, row:, col: #length, row, column
-    if horizontal
+  def check_place grid, row:, col:
+    legal = true
+    sub = grid.board[row]
+    if @horizontal 
+      @length.times do
+        if sub.at(col) == nil || grid.board[row][col].ship
+          legal = false
+        end
+        col += 1
+      end
+    else
+      @length.times do
+        if grid.board.at(row) == nil || grid.board[row][col].ship
+          legal = false
+        end
+        row += 1
+      end
+    end
+    legal
+  end
+
+  def place grid, row:, col:
+    if @horizontal
       @length.times do 
         grid.board[row][col].is_ship
-        column += 1
+        col += 1
       end
     else
       @length.times do 
@@ -28,6 +49,7 @@ end
 
 class Patrolboat < Ship
   def initialize horizontal = nil
+    super
     @length = 2
     @horizontal = horizontal
   end
@@ -35,6 +57,7 @@ end
 
 class Destroyer < Ship
   def initialize horizontal = nil
+    super
     @length = 3
     @horizontal = horizontal
   end
@@ -42,6 +65,7 @@ end
 
 class Carrier < Ship
   def initialize horizontal = nil
+    super
     @length = 5
     @horizontal = horizontal
   end
@@ -49,6 +73,7 @@ end
 
 class Sub < Ship
   def initialize horizontal = nil
+    super
     @length = 3
     @horizontal = horizontal
   end
@@ -56,6 +81,7 @@ end
 
 class Battleship < Ship
   def initialize horizontal = nil
+    super
     @length = 4
     @horizontal = horizontal
   end
