@@ -70,6 +70,11 @@ class Ship
     end 
   end
 
+  def sunk?
+    if @length == @hits
+      true
+    end
+  end
 end
 
 class Patrolboat < Ship
@@ -77,6 +82,7 @@ class Patrolboat < Ship
     super
     @length = 2
     @horizontal = horizontal
+    @hits = 0
   end
 end
 
@@ -85,6 +91,7 @@ class Destroyer < Ship
     super
     @length = 3
     @horizontal = horizontal
+    @hits = 0
     @d = true
   end
 end
@@ -94,6 +101,7 @@ class Carrier < Ship
     super
     @length = 5
     @horizontal = horizontal
+    @hits = 0
   end
 end
 
@@ -102,13 +110,15 @@ class Sub < Ship
     super
     @length = 3
     @horizontal = horizontal
+    @hits = 0
   end
 end
 
-class Battleship < Ship
+class Batship < Ship
   def initialize horizontal = nil
     super
     @length = 4
     @horizontal = horizontal
+    @hits = 0
   end
 end

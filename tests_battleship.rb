@@ -38,7 +38,7 @@ class ShipsTest < Minitest::Test
 
   def test_ships_cant_be_placed_off_grid
     g = Grid.new(5,5)
-    s1 = Battleship.new
+    s1 = Batship.new
     s2 = Patrolboat.new(true)
     
     if s1.check_place(g, col: 3, row: 3)
@@ -77,6 +77,24 @@ class ShipsTest < Minitest::Test
     refute g.board[0][0].dest
   end
 
+  def test_ships_know_theyre_hit
+    g = Grid.new(5,5)
+    s = Batship.new(true)
+
+    s.place(g, col:0, row:0)
+    row = 0
+    col = 0
+    4.times do |col|
+      g.board[0][col].shot_at
+      col += 1
+    end
+
+    col = 0
+    4.times do |col|
+      assert g.board[0][col].shot
+      col += 1
+    end
+  end
 end
 
 
