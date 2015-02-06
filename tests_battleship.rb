@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start
 require 'pry'
 
 require 'minitest/autorun'
@@ -35,17 +37,25 @@ class ShipsTest < Minitest::Test
 
   def test_ships_cant_be_placed_off_grid
     g = Grid.new(5,5)
-    s = Carrier.new 
+    s1 = Battleship.new
+    s2 = Patrolboat.new(true)
+    s3 = Destroyer.new 
     # refute s.check_place(g, col: 3, row: 3)
-    if s.check_place(g, col: 3, row: 3)
-      s.place(g, col:3, row:3)
+    if s1.check_place(g, col: 3, row: 3)
+      s1.place(g, col:3, row:3)
     end
     refute g.board[3][3].ship
 
-    if s.check_place(g,col:0, row:0)
-      s.place(g, col:0, row:0)
+    if s2.check_place(g,col:0, row:0)
+      s2.place(g, col:0, row:0)
     end
-    assert g.board[0][0].ship
+    assert g.board[0][1].ship
+
+    if s3.check_place(g, col:2, row: 1)
+      s3.place(g, col:2, row: 1)
+    end
+    assert g.board[3][2].ship
+
   end
 
   def test_ships_cant_overlap
@@ -66,32 +76,6 @@ class ShipsTest < Minitest::Test
 
 end
 
-
-
-
-# class ShipsTests <Minitest::Test
-  
-#   def test_ships_know_their_length_and_direction
-#     s = Ship.new 2
-#     assert_equal s.length, 2
-#     refute s.horizontal
-#   end
-
-#   def test_ships_can_be_placed
-#     s = Ship.new 2, true
-#     g = Grid.new (2,2)
-
-#     s.place column: 1, row: 2
-
-
-#   end
-# end
-# class GridTests < MiniTest::Test
-#   def tests_it_can_make_a_grid
-#     g = Grid.new (2,2)
-#     assert 
-#   end
-# end
 
 
 
