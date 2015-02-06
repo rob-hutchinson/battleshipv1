@@ -22,6 +22,16 @@ class SpacesTests < Minitest::Test
 
 end
 
+class ShipsTest < Minitest::Test
+  def test_ships_can_be_placed
+    g = Grid.new(2,2)
+    s = Ship.new(2)
+
+    s.place(g,2,0,0)
+    assert g.board[0][0].ship
+
+  end
+end
 # class ShipsTests <Minitest::Test
   
 #   def test_ships_know_their_length_and_direction
@@ -46,7 +56,5 @@ end
 #   end
 # end
 
-g = Grid.new(10,10)
-g.display
 
 
