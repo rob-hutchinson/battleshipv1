@@ -30,11 +30,11 @@ system "clear"
 
   2.times do |x|
   
-    grids[x].display
+    grids[x].display_hidden
     puts "\n#{players[x].name} time to place your ships!"
     loop do
       system "clear"
-      grids[x].display
+      grids[x].display_hidden
       puts "\n#{players[x].name}, would you like your Carrier to be horizontal or vertical? (h/v)"
       if gets.chomp.downcase == 'h'
         car = Carrier.new(true)
@@ -55,7 +55,7 @@ system "clear"
 
       if car.check_place(grids[x], row: row, col: col)
         car.place(grids[x], row: row, col: col)
-        grids[x].display
+        grids[x].display_hidden
         break
       else
         puts "Invalid placement! Try again.\n"
@@ -65,7 +65,7 @@ system "clear"
 
     loop do
       system "clear"
-      grids[x].display
+      grids[x].display_hidden
       puts "\n#{players[x].name}, would you like your Battleship to be horizontal or vertical? (h/v)"
       if gets.chomp.downcase == 'h'
         bat = Batship.new(true)
@@ -86,7 +86,7 @@ system "clear"
 
       if bat.check_place(grids[x], row: row, col: col)
         bat.place(grids[x], row: row, col: col)
-        grids[x].display
+        grids[x].display_hidden
         break
       else
         puts "Invalid placement! Try again.\n"
@@ -96,7 +96,7 @@ system "clear"
 
     loop do
       system "clear"
-      grids[x].display
+      grids[x].display_hidden
       puts "\n#{players[x].name}, would you like your Destroyer to be horizontal or vertical? (h/v)"
       if gets.chomp.downcase == 'h'
         dest = Destroyer.new(true)
@@ -117,7 +117,7 @@ system "clear"
 
       if dest.check_place(grids[x], row: row, col: col)
         dest.place(grids[x], row: row, col: col)
-        grids[x].display
+        grids[x].display_hidden
         break
       else
         puts "Invalid placement! Try again.\n"
@@ -127,7 +127,7 @@ system "clear"
 
     loop do
       system "clear"
-      grids[x].display
+      grids[x].display_hidden
       puts "\n#{players[x].name}, would you like your Submarine to be horizontal or vertical? (h/v)"
       if gets.chomp.downcase == 'h'
         sub = Sub.new(true)
@@ -148,7 +148,7 @@ system "clear"
 
       if sub.check_place(grids[x], row: row, col: col)
         sub.place(grids[x], row: row, col: col)
-        grids[x].display
+        grids[x].display_hidden
         break
       else
         puts "Invalid placement! Try again.\n"
@@ -158,7 +158,7 @@ system "clear"
 
     loop do
       system "clear"
-      grids[x].display
+      grids[x].display_hidden
       puts "\n#{players[x].name}, would you like your Patrolboat to be horizontal or vertical? (h/v)"
       if gets.chomp.downcase == 'h'
         pat = Patrolboat.new(true)
@@ -180,7 +180,7 @@ system "clear"
       if pat.check_place(grids[x], row: row, col: col)
         pat.place(grids[x], row: row, col: col)
         system "clear"
-        grids[x].display
+        grids[x].display_hidden
         puts "Ship placement complete!"
         sleep (3)
         system "clear"
@@ -191,6 +191,7 @@ system "clear"
       end
     end
 
+binding.pry
 
 end
 

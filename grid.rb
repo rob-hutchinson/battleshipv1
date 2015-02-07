@@ -23,23 +23,31 @@ class Grid
   end
 
   def display_row row
-    # row.each do |space|
-    #   if space.shot && space.ship
-    #     print " X "
-    #   elsif space.shot && !space.ship
-    #     print " 0 "
-    #   else
-    #     print " + "
-    #   end
-    # end
-    # puts "\n"
-
     row.each do |space|
       if space.shot && space.ship
         print " X "
       elsif space.shot && !space.ship
         print " 0 "
       else
+        print " + "
+      end
+    end
+    puts "\n"
+  end
+
+  def display_hidden
+    @board.each do |row|
+      display_hidden_row row
+    end
+  end
+
+  def display_hidden_row row
+    row.each do |space|
+      if space.shot && space.ship
+        print " X "
+      elsif space.shot && !space.ship
+        print " 0 "
+      elsif
         if space.patrol
           print " P "
         elsif space.sub
@@ -57,4 +65,5 @@ class Grid
     end
     puts "\n"
   end
+  
 end
