@@ -23,13 +23,36 @@ class Grid
   end
 
   def display_row row
+    # row.each do |space|
+    #   if space.shot && space.ship
+    #     print " X "
+    #   elsif space.shot && !space.ship
+    #     print " 0 "
+    #   else
+    #     print " + "
+    #   end
+    # end
+    # puts "\n"
+
     row.each do |space|
       if space.shot && space.ship
         print " X "
       elsif space.shot && !space.ship
         print " 0 "
       else
-        print " + "
+        if space.patrol
+          print " P "
+        elsif space.sub
+          print " S "
+        elsif space.batship
+          print " B "
+        elsif space.dest
+          print " D "
+        elsif space.carrier
+          print " C "
+        else
+          print " + "
+        end
       end
     end
     puts "\n"
