@@ -7,23 +7,33 @@ class Ship
   def initialize horizontal = nil
     # @length = length
     @horizontal = horizontal
-  end  
+  end
+
+  def which_ship grid, row, col
+    grid.board[row][col].is_ship
+    if @length == 2
+      grid.board[row][col].is_patrol
+    elsif @length == 4
+      grid.board[row][col].is_batship
+    elsif @length == 5
+      grid.board[row][col].is_carrier
+    elsif @d
+      grid.board[row][col].is_dest
+    else
+      grid.board[row][col].is_sub
+    end
+  end
 
   def check_place grid, row:, col:
     legal = true
     sub = grid.board[row]
-    if @horizontal 
-      @length.times do
-        if sub.at(col) == nil || grid.board[row][col].ship
-          legal = false
-        end
-        col += 1
+    @length.times do
+      if sub.at(col) == nil || grid.board.at(row) == nil || grid.board[row][col].ship
+        legal = false
       end
-    else
-      @length.times do
-        if grid.board.at(row) == nil || grid.board[row][col].ship
-          legal = false
-        end
+      if @horizontal
+        col+=1
+      else
         row += 1
       end
     end
@@ -31,45 +41,23 @@ class Ship
   end
 
   def place grid, row:, col:
-    if @horizontal
-      @length.times do 
-        grid.board[row][col].is_ship
-        if @length == 2
-          grid.board[row][col].is_patrol
-        elsif @length == 4
-          grid.board[row][col].is_batship
-        elsif @length == 5
-          grid.board[row][col].is_carrier
-        else
-          if @d
-            grid.board[row][col].is_dest
-          else
-            grid.board[row][col].is_sub
-          end
-        end
+    @length.times do 
+      which_ship grid, row, col
+      if @horizontal
         col += 1
+      else 
+        row+=1
       end
-    else
-      @length.times do 
-        grid.board[row][col].is_ship
-        if @length == 2
-          grid.board[row][col].is_patrol
-        elsif @length == 4
-          grid.board[row][col].is_batship
-        elsif @length == 5
-          grid.board[row][col].is_carrier
-        else
-          if @d
-            grid.board[row][col].is_dest
-          else
-            grid.board[row][col].is_sub
-          end
-        end
-        row += 1
-      end
-    end 
+    end
   end
 
+  
+
+  def sunk?
+    if @length == @hits
+      true
+    end
+  end
 end
 
 class Patrolboat < Ship
