@@ -191,7 +191,8 @@ system "clear"
   end
 end
 
-until players[0].total_hits == 17 || players[1].total_hits == 17
+until players[0].total_hits == 0 || players[1].total_hits == 0
+  binding.pry
   loop do
     system 'clear'
     grids[1].display
@@ -219,6 +220,19 @@ until players[0].total_hits == 17 || players[1].total_hits == 17
       break
     end
   end
-
-
 end
+
+if players[0].total_hits == 0 && players[1].total_hits > 0
+  system "clear"
+  puts "Congratulations #{players[1].name}, you won!"
+  sleep(2)
+elsif players[0].total_hits > 1 && players[1].total_hits == 0
+  system "clear"
+  puts "Congratulations #{players[0].name}, you won!"
+  sleep(2)
+else
+  system "clear"
+  puts "The game was a tie!"
+  sleep(2)
+end
+
