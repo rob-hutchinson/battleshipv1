@@ -19,13 +19,15 @@ class Grid
   end
 
   def display
-    @board.each do |row|
+    print "     1  2  3  4  5  6  7  8  9  10 \n"
+    @board.each_with_index do |row, index|
+      print " #{index+1} ".rjust(4)
       display_row row
     end
   end
 
   def display_row row
-    row.each do |space|
+    row.each_with_index do |space|
       if space.shot && space.ship
         print " X "
       elsif space.shot && !space.ship
@@ -38,7 +40,9 @@ class Grid
   end
 
   def display_hidden
-    @board.each do |row|
+    print "     1  2  3  4  5  6  7  8  9  10 \n"
+    @board.each_with_index do |row, index|
+      print " #{index+1} ".rjust(4)
       display_hidden_row row
     end
   end
