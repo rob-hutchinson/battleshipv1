@@ -49,6 +49,8 @@ system "clear"
       row = gets.chomp.to_i-1
       if (0..9).include?(row) && (0..9).include?(col)
         break
+      else
+        puts "Invalid placement! Try again.\n"
       end
     end
 
@@ -80,6 +82,8 @@ system "clear"
       row = gets.chomp.to_i-1
       if (0..9).include?(row) && (0..9).include?(col)
         break
+      else
+        puts "Invalid placement! Try again.\n"
       end
     end
 
@@ -111,6 +115,8 @@ system "clear"
       row = gets.chomp.to_i-1
       if (0..9).include?(row) && (0..9).include?(col)
         break
+      else
+        puts "Invalid placement! Try again.\n"
       end
     end
 
@@ -142,6 +148,8 @@ system "clear"
       row = gets.chomp.to_i-1
       if (0..9).include?(row) && (0..9).include?(col)
         break
+      else
+        puts "Invalid placement! Try again.\n"
       end
     end
 
@@ -173,6 +181,8 @@ system "clear"
       row = gets.chomp.to_i-1
       if (0..9).include?(row) && (0..9).include?(col)
         break
+      else
+        puts "Invalid placement! Try again.\n"
       end
     end
 
