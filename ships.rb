@@ -70,11 +70,6 @@ class Ship
     end 
   end
 
-  def sunk?
-    if @length == @hits
-      true
-    end
-  end
 end
 
 class Patrolboat < Ship

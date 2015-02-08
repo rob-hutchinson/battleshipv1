@@ -6,6 +6,7 @@ require 'minitest/autorun'
 require './spaces'
 require './grid'
 require './ships'
+require './player'
 
 
 class SpacesTests < Minitest::Test
@@ -95,6 +96,8 @@ class ShipsTest < Minitest::Test
       col += 1
     end
   end
+
+
 end
 
 
