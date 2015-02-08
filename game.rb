@@ -193,6 +193,7 @@ end
 
 until players[0].total_hits == 17 || players[1].total_hits == 17
   loop do
+    system 'clear'
     grids[1].display
     puts "\n#{players[0].name}, it's your turn. Where would you like to fire?\n"
     puts "\nColumn?"
@@ -201,6 +202,20 @@ until players[0].total_hits == 17 || players[1].total_hits == 17
     row = gets.chomp.to_i-1
 
     if grids[1].check(grids[1], players[1], row, col)
+      break
+    end
+  end
+
+  loop do
+    system 'clear'
+    grids[0].display
+    puts "\n#{players[1].name}, it's your turn. Where would you like to fire?\n"
+    puts "\nColumn?"
+    col = gets.chomp.to_i-1
+    puts "\nRow?"
+    row = gets.chomp.to_i-1
+
+    if grids[0].check(grids[0], players[0], row, col)
       break
     end
   end

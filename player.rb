@@ -25,6 +25,7 @@ class Player
     @pat_hits -= 1
     if @pat_hits == 0
       puts "You sunk the Patrolboat!"
+      sleep(2)
     end
   end
 
@@ -32,6 +33,7 @@ class Player
     @dest_hits -= 1
     if @dest_hits == 0
       puts "You sunk the Destroyer!"
+      sleep(2)
     end
   end
 
@@ -39,6 +41,7 @@ class Player
     @sub_hits -= 1
     if @sub_hits == 0
       puts "You sunk the Submarine!"
+      sleep(2)
     end
   end
 
@@ -46,6 +49,7 @@ class Player
     @bat_hits -= 1
     if @bat_hits == 0
       puts "You sunk the Battleship!"
+      sleep(2)
     end
   end
 
@@ -53,6 +57,7 @@ class Player
     @car_hits -= 1
     if @car_hits == 0
       puts "You sunk the Carrier!"
+      sleep(2)
     end
   end
 

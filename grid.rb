@@ -69,18 +69,24 @@ class Grid
   end
 
   def check x, y, row, col
-    binding.pry
     if x.board[row][col].shot
       puts "You already tried that! Fire again!"
+      sleep(2)
       return false
     elsif x.board[row][col].ship
       x.board[row][col].shot_at
+      system "clear"
+      x.display
       puts "HIT!"
+      sleep(2)
       x.ship_type(x, y, row,col)
       return true
     else
       x.board[row][col].shot_at
+      system "clear"
+      x.display
       puts "MISS!"
+      sleep(2)
       return true
     end
   end
