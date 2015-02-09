@@ -202,7 +202,6 @@ system "clear"
 end
 
 until players[0].total_hits == 0 || players[1].total_hits == 0
-  binding.pry
   loop do
     system 'clear'
     grids[1].display
